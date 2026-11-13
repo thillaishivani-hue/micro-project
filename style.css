@@ -707,3 +707,55 @@ body.dark #calcDisplay {
     background: #38314e;
     color: white;
 }
+
+.form-container {
+    max-width: 450px;
+    margin: 30px auto;
+    padding: 25px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.form-container h2 {
+    text-align: center;
+    color: #7545b8;
+}
+
+.form-container label {
+    display: block;
+    margin-top: 12px;
+    font-weight: bold;
+}
+
+.form-container input,
+.form-container select {
+    width: 100%;
+    padding: 11px;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.form-container button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    background: #8b5cf6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.form-container small {
+    display: block;
+    margin-top: 6px;
+    color: #666;
+    line-height: 1.5;
+}
+
+.form-container a {
+    color: #7545b8;
+}

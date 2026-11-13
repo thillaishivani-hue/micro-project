@@ -691,3 +691,54 @@ function calculateResult() {
     }
 }
 
+// Show registration page
+function showRegister() {
+    document.getElementById("welcomePage").classList.add("hidden");
+    document.getElementById("loginPage").classList.add("hidden");
+    document.getElementById("registerPage").classList.remove("hidden");
+}
+
+// Show login page
+function showLogin() {
+    document.getElementById("registerPage").classList.add("hidden");
+    document.getElementById("loginPage").classList.remove("hidden");
+}
+
+// Registration form
+document.getElementById("registerForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let name = document.getElementById("fullName").value;
+    let id = document.getElementById("regId").value;
+    let email = document.getElementById("regEmail").value;
+    let mobile = document.getElementById("mobile").value;
+    let division = document.getElementById("division").value;
+    let password = document.getElementById("regPassword").value;
+    let confirm = document.getElementById("confirmPassword").value;
+
+    if (password !== confirm) {
+        alert("Passwords do not match!");
+        return;
+    }
+
+    let user = {
+        name: name,
+        id: id,
+        email: email,
+        mobile: mobile,
+        division: division
+    };
+
+    // Demo only: do not store real passwords in LocalStorage
+    localStorage.setItem("registeredUser", JSON.stringify(user));
+
+    alert("Registration successful! Please login.");
+
+    document.getElementById("registerForm").reset();
+    showLogin();
+
+    // Fill the registered email in the login form
+    document.getElementById("email").value = email;
+});
+
+
