@@ -1,0 +1,370 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoneyMate - Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- WELCOME PAGE -->
+    <section id="welcomePage" class="welcome-page">
+        <div class="welcome-content">
+            <div class="logo">✦</div>
+            <h1>Welcome to MoneyMate</h1>
+            <h2>Your Money. Your Control.</h2>
+
+            <p>
+                Manage your daily expenses, control your budget
+                and understand your spending habits with MoneyMate.
+            </p>
+
+            <div class="welcome-features">
+                <div>💰 Track Expenses</div>
+                <div>📊 View Reports</div>
+                <div>🎯 Manage Budget</div>
+            </div>
+
+            <button id="getStartedBtn">Get Started →</button>
+            <p class="small-text">Smart spending starts here ♥</p>
+        </div>
+    </section>
+
+
+    <!-- LOGIN PAGE -->
+    <section id="loginPage" class="login-page hidden">
+        <div class="login-card">
+            <div class="logo">✦</div>
+            <h1>MoneyMate Login</h1>
+            <p>Welcome back! Please log in to continue.</p>
+
+            <form id="loginForm">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password"
+                       placeholder="Enter your password" required>
+
+                <button type="submit">Login</button>
+            </form>
+
+            <p class="small-text">Your personal expense tracker</p>
+        </div>
+    </section>
+
+
+    <!-- INTRODUCTION PAGE -->
+    <section id="introPage" class="intro-page hidden">
+        <div class="intro-card">
+            <div class="logo">🎉</div>
+            <h1>You're All Set!</h1>
+            <h2>Welcome to Your Financial Space</h2>
+
+            <p>
+                MoneyMate helps you record expenses, manage your
+                budget and understand where your money goes.
+            </p>
+
+            <div class="intro-info">
+                <div class="intro-item">
+                    <span>💸</span>
+                    <div>
+                        <h3>Track Expenses</h3>
+                        <p>Record your everyday spending.</p>
+                    </div>
+                </div>
+
+                <div class="intro-item">
+                    <span>📈</span>
+                    <div>
+                        <h3>Analyze Spending</h3>
+                        <p>Understand your spending habits.</p>
+                    </div>
+                </div>
+
+                <div class="intro-item">
+                    <span>💰</span>
+                    <div>
+                        <h3>Control Budget</h3>
+                        <p>Keep your expenses within limits.</p>
+                    </div>
+                </div>
+            </div>
+
+            <button id="continueBtn">Go to My Dashboard →</button>
+        </div>
+    </section>
+
+
+    <!-- MAIN DASHBOARD -->
+    <section id="dashboard" class="dashboard hidden">
+
+        <header class="topbar">
+            <div>
+                <h1>✦ MoneyMate</h1>
+                <p>Your Personal Expense Tracker</p>
+            </div>
+
+            <div class="top-buttons">
+                <button id="themeBtn" class="secondary-btn">🌙 Dark Mode</button>
+                <button id="logoutBtn" class="logout-btn">Logout</button>
+            </div>
+        </header>
+
+        <main class="container">
+            <!-- CALCULATOR -->
+<div class="section-card calculator">
+    <h2>🧮 MoneyMate Calculator</h2>
+
+    <input type="text" id="calcDisplay"
+           placeholder="0" readonly>
+
+    <div class="calculator-buttons">
+        <button onclick="clearCalc()">C</button>
+        <button onclick="deleteCalc()">DEL</button>
+        <button onclick="addCalc('/')">÷</button>
+        <button onclick="addCalc('*')">×</button>
+
+        <button onclick="addCalc('7')">7</button>
+        <button onclick="addCalc('8')">8</button>
+        <button onclick="addCalc('9')">9</button>
+        <button onclick="addCalc('-')">−</button>
+
+        <button onclick="addCalc('4')">4</button>
+        <button onclick="addCalc('5')">5</button>
+        <button onclick="addCalc('6')">6</button>
+        <button onclick="addCalc('+')">+</button>
+
+        <button onclick="addCalc('1')">1</button>
+        <button onclick="addCalc('2')">2</button>
+        <button onclick="addCalc('3')">3</button>
+        <button onclick="calculateResult()" class="equal">=</button>
+
+        <button onclick="addCalc('0')">0</button>
+        <button onclick="addCalc('.')">.</button>
+    </div>
+</div>
+
+<!-- MONEY ADVISOR CHATBOT -->
+<div class="chatbot">
+    <button id="chatToggle" class="chat-toggle">💬 Money Advisor</button>
+
+    <div id="chatWindow" class="chat-window hidden">
+        <div class="chat-header">
+            <div>
+                <h3>💰 Money Advisor</h3>
+                <small>Your personal spending assistant</small>
+            </div>
+            <button id="closeChat" class="close-chat">×</button>
+        </div>
+
+        <div id="chatMessages" class="chat-messages">
+            <div class="owl-mascot">
+    <img src="C:\Users\THILLAI SHIVANI\OneDrive\Pictures\Screenshots\owl.png"
+     alt="Ollie the Smart Money Owl">
+    </div>
+            <div class="bot-message">
+                Hi! I'm your Money Advisor. Ask me about your
+                spending, budget or saving tips!
+            </div>
+        </div>
+
+        <form id="chatForm" class="chat-input-area">
+            <input
+                type="text"
+                id="chatInput"
+                placeholder="Ask me something..."
+                autocomplete="off"
+                required
+            >
+            <button type="submit">Send</button>
+        </form>
+    </div>
+</div>
+
+
+            <div class="welcome-heading">
+                <h2>Hello! Welcome to your Dashboard 👋</h2>
+                <p id="today"></p>
+            </div>
+
+
+            <!-- SUMMARY CARDS -->
+            <div class="summary-grid">
+
+                <div class="summary-card">
+                    <p>Total Expenses</p>
+                    <h2 id="total">₹0.00</h2>
+                </div>
+
+                <div class="summary-card">
+                    <p>This Month</p>
+                    <h2 id="monthlyTotal">₹0.00</h2>
+                </div>
+
+                <div class="summary-card">
+                    <p>Remaining Budget</p>
+                    <h2 id="remaining">₹0.00</h2>
+                </div>
+
+                <div class="summary-card">
+                    <p>Total Transactions</p>
+                    <h2 id="count">0</h2>
+                </div>
+
+            </div>
+
+
+            <!-- BUDGET SECTION -->
+            <div class="section-card">
+                <h2>🎯 Monthly Budget</h2>
+
+                <div class="budget-input">
+                    <input type="number" id="budget"
+                           min="1" placeholder="Enter monthly budget">
+
+                    <button id="saveBudget">Save Budget</button>
+                </div>
+
+                <div class="progress-background">
+                    <div id="progress"></div>
+                </div>
+
+                <p id="budgetMessage">Set your monthly budget.</p>
+            </div>
+
+
+            <!-- ADD EXPENSE -->
+            <div class="section-card">
+                <h2>➕ Add New Expense</h2>
+
+                <form id="expenseForm" class="expense-form">
+
+                    <div>
+                        <label for="name">Expense Name</label>
+                        <input type="text" id="name"
+                               placeholder="Example: Food" required>
+                    </div>
+
+                    <div>
+                        <label for="amount">Amount (₹)</label>
+                        <input type="number" id="amount"
+                               min="0.01" step="0.01"
+                               placeholder="Enter amount" required>
+                    </div>
+
+                    <div>
+                        <label for="category">Category</label>
+                        <select id="category" required>
+                            <option value="">Select Category</option>
+                            <option value="Food">Food</option>
+                            <option value="Travel">Travel</option>
+                            <option value="Shopping">Shopping</option>
+                            <option value="Education">Education</option>
+                            <option value="Bills">Bills</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Health">Health</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="date">Date</label>
+                        <input type="date" id="date" required>
+                    </div>
+
+                    <button type="submit">Add Expense</button>
+
+                </form>
+            </div>
+
+
+            <!-- EXPENSE LIST -->
+            <div class="section-card">
+                <h2>📋 Expense History</h2>
+
+                <div class="filter-area">
+                    <input type="search" id="search"
+                           placeholder="Search expenses...">
+
+                    <select id="filter">
+                        <option value="All">All Categories</option>
+                        <option value="Food">Food</option>
+                        <option value="Travel">Travel</option>
+                        <option value="Shopping">Shopping</option>
+                        <option value="Education">Education</option>
+                        <option value="Bills">Bills</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Health">Health</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Amount</th>
+                                <th>Category</th>
+                                <th>Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="expenseList"></tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <!-- CHART -->
+            <div class="section-card">
+                <h2>📊 Expense Analysis</h2>
+                <p>Category-wise spending</p>
+
+                <div class="chart-container">
+                    <canvas id="expenseChart"></canvas>
+                </div>
+            </div>
+
+
+            <!-- MONTHLY REPORT -->
+            <div class="section-card">
+                <h2>📅 Monthly Expense Report</h2>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Month</th>
+                                <th>Total Expenses</th>
+                                <th>Transactions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="monthlyReport"></tbody>
+                    </table>
+                </div>
+            </div>
+
+        </main>
+
+        <footer>
+            <p>© 2026 MoneyMate | Manage Money Smartly ♥</p>
+        </footer>
+
+    </section>
+
+
+    <!-- Chart library must load before script.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
+
+
